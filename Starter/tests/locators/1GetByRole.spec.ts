@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Get by Role practice - heading', async ({ page }) => {
+test('15 - heading', async ({ page }) => {
     await page.goto('')
 
     const servicesHeading = page.getByRole('heading', {
@@ -10,7 +10,7 @@ test('Get by Role practice - heading', async ({ page }) => {
     await expect(servicesHeading).toBeVisible()
 })
 
-test('Get by Role - list', async ({ page }) =>{
+test('16 - lists', async ({page}) =>{
     await page.goto('')
 
     const servicesList = page.getByRole('list')
@@ -24,15 +24,16 @@ test('Get by Role - list', async ({ page }) =>{
     }
 })
 
-test('Get by Role - Buttons', async ({ page }) =>{
-    await page.goto('') 
+test('17 - Buttons', async ({page}) =>{
+    await page.goto('')
 
-    const acceptCookiesButton = page.getByRole('button', {
+    const acceptCookiesButton = page.getByRole('button',{
         name: 'Accept',
         exact: true
     })
-    const declineCookiesButton = page.getByRole('button', {
-        name: 'decline'
+    const declineCookiesButton = page.getByRole('button',{
+        name: 'Decline',
+        exact: true
     })
 
     await acceptCookiesButton.click()
@@ -41,21 +42,18 @@ test('Get by Role - Buttons', async ({ page }) =>{
     await expect(declineCookiesButton).not.toBeVisible()
 })
 
-test('Get by Role - link', async ({ page }) =>{
-    await page.goto('')  
+test('17 - Link', async ({page}) =>{
+    await page.goto('')
 
-    await page.getByRole('button', {
+    await page.getByRole('button',{
         name: 'decline'
     }).click()
-    
+
     await page.getByRole('link', {
         name: 'Go to Feedback Form'
     }).click()
 
     const url = page.url()
     expect(url).toContain('FeedBack')
+
 })
-
-
-
-
